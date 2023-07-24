@@ -18,7 +18,7 @@ const grantAccessForm = document.getElementById('grantAccessForm');
         async function grantAccess(metamaskId) {
             try {
                 const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-                const contractAddress = '0x9B9D6D59d9A799454B662b6138960E0f7D654f98'; // Replace with your deployed contract address
+                const contractAddress = '0x6dA7cEa9C3EC0dafe574aBB85fFf746A7626E816'; // Replace with your deployed contract address
                 const contractABI = [
                     {
                         "inputs": [],
@@ -290,7 +290,7 @@ const grantAccessForm = document.getElementById('grantAccessForm');
         async function revokeAccess(metamaskId) {
             try {
                 const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-                const contractAddress = '0x9B9D6D59d9A799454B662b6138960E0f7D654f98'; // Replace with your deployed contract address
+                const contractAddress = '0x6dA7cEa9C3EC0dafe574aBB85fFf746A7626E816'; // Replace with your deployed contract address
                 const contractABI =[
                     {
                         "inputs": [],

@@ -26,7 +26,7 @@ function updateReportData(report) {
 
 // Function to fetch all report IDs from the smart contract
 async function getAllReportIds() {
-  const contractAddress = "0x9B9D6D59d9A799454B662b6138960E0f7D654f98"; // Replace with the deployed contract address
+  const contractAddress = "0x6dA7cEa9C3EC0dafe574aBB85fFf746A7626E816"; // Replace with the deployed contract address
   const contractABI = [
     {
       "inputs": [],
@@ -311,7 +311,7 @@ async function getAllReportIds() {
 
 // Function to fetch report data by ID from the smart contract
 async function getReportById(reportId) {
-  const contractAddress = "0x9B9D6D59d9A799454B662b6138960E0f7D654f98"; // Replace with the deployed contract address
+  const contractAddress = "0x6dA7cEa9C3EC0dafe574aBB85fFf746A7626E816"; // Replace with the deployed contract address
   const contractABI =[
     {
       "inputs": [],
