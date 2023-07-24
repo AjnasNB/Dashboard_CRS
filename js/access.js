@@ -1,6 +1,6 @@
 const grantAccessForm = document.getElementById("grantAccessForm");
 const revokeAccessForm = document.getElementById("revokeAccessForm");
-
+const web3 = new Web3(window.ethereum);
 grantAccessForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   const formData = new FormData(grantAccessForm);
@@ -17,7 +17,7 @@ revokeAccessForm.addEventListener("submit", async (event) => {
 
 async function grantAccess(metamaskId) {
   try {
-    const accounts = await ethereum.request({ method: "eth_requestAccounts" });
+    
     const contractAddress = "0x6dA7cEa9C3EC0dafe574aBB85fFf746A7626E816"; // Replace with your deployed contract address
     const contractABI = [
       {
@@ -278,8 +278,13 @@ async function grantAccess(metamaskId) {
       },
     ]; // Replace with your contract ABI
     const contract = new web3.eth.Contract(contractABI, contractAddress);
+    const web3 = new Web3(window.ethereum);
+  
+    // Get the account from the current provider (Metamask)
+    const accounts = await web3.eth.requestAccounts();
+    const account = accounts[0];
 
-    await contract.methods.grantAccess(metamaskId).call({ from: accounts[0] });
+    await contract.methods.grantAccess(metamaskId).send({ from: account });
 
     alert("Access granted successfully!");
   } catch (error) {
@@ -289,7 +294,7 @@ async function grantAccess(metamaskId) {
 
 async function revokeAccess(metamaskId) {
   try {
-    const accounts = await ethereum.request({ method: "eth_requestAccounts" });
+    
     const contractAddress = "0x6dA7cEa9C3EC0dafe574aBB85fFf746A7626E816"; // Replace with your deployed contract address
     const contractABI = [
       {
@@ -549,9 +554,14 @@ async function revokeAccess(metamaskId) {
         type: "function",
       },
     ]; // Replace with your contract ABI
+    
+  
+    // Get the account from the current provider (Metamask)
+    const accounts = await web3.eth.requestAccounts();
+    const account = accounts[0];
     const contract = new web3.eth.Contract(contractABI, contractAddress);
 
-    await contract.methods.revokeAccess(metamaskId).call({ from: accounts[0] });
+    await contract.methods.revokeAccess(metamaskId).send({ from: account });
 
     alert("Access revoked successfully!");
   } catch (error) {
