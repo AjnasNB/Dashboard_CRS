@@ -10,7 +10,7 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Progress Bar</title>
+    <title>Grand Access</title>
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
@@ -143,7 +143,7 @@
                     <ul class="list-unstyled navbar__list">
 
                         <li class="has-sub">
-                            <a class="js-arrow" href="#">
+                            <a class="js-arrow" href="revokeaccess.html">
                                 <i class="fas fa-copy"></i>RevokeAccess</a>
 
                         </li>
@@ -178,19 +178,7 @@
         </form>
     </div>
     <script>
-        async function grantAccess() {
-            const metamaskId = document.getElementById('metamaskId').value;
-            try {
-                const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-                const contract = new web3.eth.Contract(ABI, CONTRACT_ADDRESS); // Replace with your actual ABI and contract address
-                const result = await contract.methods.grantAccess(metamaskId).send({ from: accounts[0] });
-                console.log(result);
-                alert('Access granted successfully!');
-            } catch (error) {
-                console.error(error);
-                alert('Error granting access.');
-            }
-        }
+        
     </script>
    
     
@@ -216,11 +204,12 @@
     <script src="js/main.js"></script>
 
 
+    <script src="js/grandaccess.js"></script>
+
+    <script src="https://cdn.ethers.io/lib/ethers-5.5.0.min.js"></script>
    
-
-        <script src="https://cdn.jsdelivr.net/npm/web3@1.5.3/dist/web3.min.js"></script>
-
-
+  
+        <script src="https://cdn.jsdelivr.net/npm/web3@1.5.0/dist/web3.min.js"></script>
 
 
   

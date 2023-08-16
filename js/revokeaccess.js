@@ -274,11 +274,11 @@ async function grantAccess() {
         const accounts = await web3.eth.getAccounts();
         const userAccount = accounts[0];
 
-        const result = await contract.methods.grantAccess(metamaskAddress).send({ from: userAccount });
-        console.log('Access granted successfully:', result);
-        alert('Access granted successfully');
+        const result = await contract.methods.revokeAccess(metamaskAddress).send({ from: userAccount });
+        console.log('Access revoked successfully:', result);
+        alert('Access revoked successfully');
     } catch (error) {
-        console.error('Error granting access:', error);
+        console.error('Error revoking access:', error);
     }
 }
 
