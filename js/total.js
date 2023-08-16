@@ -262,6 +262,10 @@ async function getTotalReports() {
         }
     ] // Replace with the actual contract ABI
   
+    if ( window.ethereum === 'undefined') {
+        alert('Metamask is not installed. Please install Metamask to use this app.');
+        return;
+    }
     // Create a Web3 instance
     const web3 = new Web3(window.ethereum);
   
@@ -271,36 +275,48 @@ async function getTotalReports() {
   
     // Create the contract instance
     const contract = new web3.eth.Contract(abi, contractAddress);
-  
+
     try {
-      // Call the getTotalContractsDeployed function in the smart contract
-      const totalReports = await contract.methods.getTotalContractsDeployed().call({ from: account });
-      console.log('Total Reports:', totalReports);
-  
-      // Update the h1 element with the total number of reports
-      const totalReportsElement1 = document.getElementById('total-report1');
-      totalReportsElement1.innerText = ` ${totalReports}`;
-      const totalReportsElement2 = document.getElementById('total-report2');
-      totalReportsElement2.innerText = ` ${totalReports}`;
-      const totalReportsElement3 = document.getElementById('total-report3');
-      totalReportsElement3.innerText = ` ${totalReports}`;
-      const totalReportsElement4 = document.getElementById('notification-count');
-      totalReportsElement4.innerText = ` ${totalReports}`;
-    } catch (error) {
-      console.error('Error getting total reports:', error);
+        // Call the getTotalContractsDeployed function in the smart contract
+        const totalReports = await contract.methods.getTotalContractsDeployed().call({ from: account });
+        console.log('Total Reports:', totalReports);
+    
+        // Update the h1 element with the total number of reports
+        const totalReportsElement1 = document.getElementById('total-report1');
+        totalReportsElement1.innerText = ` ${totalReports}`;
+        const totalReportsElement2 = document.getElementById('total-report2');
+        totalReportsElement2.innerText = ` ${totalReports}`;
+        const totalReportsElement3 = document.getElementById('total-report3');
+        totalReportsElement3.innerText = ` ${totalReports}`;
+        const totalReportsElement4 = document.getElementById('notification-count');
+        totalReportsElement4.innerText = ` ${totalReports}`;
+    
+        // Alert for successful login
+        alert('Login successful!');
+    
+      } catch (error) {
+        console.error('Error getting total reports:', error);
+        // Alert for unsuccessful login
+        alert('Login unsuccessful. Please check your authorization.');
+      }
     }
-  }
-  
-  // Wait for the DOM to be loaded before calling the function
-  document.addEventListener('DOMContentLoaded', async () => {
-    try {
-      // Request Metamask's permission to access the user's Ethereum account
-      await window.ethereum.enable();
-  
-      // Call the function to get the total number of reports and update the UI
-      getTotalReports();
-    } catch (error) {
-      console.error('Error initializing the app:', error);
-    }
-  });
-  
+    
+    // Wait for the DOM to be loaded before calling the function
+    document.addEventListener('DOMContentLoaded', async () => {
+      try {
+        // Request Metamask's permission to access the user's Ethereum account
+        await window.ethereum.enable();
+    
+        // Call the function to get the total number of reports and update the UI
+        getTotalReports();
+      } catch (error) {
+        console.error('Error initializing the app:', error);
+        alert('Login unsuccessful. Please check your authorization.');
+
+      }
+    });
+    
+    
+    
+    
+    
