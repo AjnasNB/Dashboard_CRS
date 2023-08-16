@@ -3,7 +3,7 @@
 const web3 = new Web3(window.ethereum);
 
 // Contract address and ABI
-const contractAddress = '0xC280bE60613612b9Be2e397921276026688494Eb';
+const contractAddress = '0x81dA37F59413989b0B62f54E071a53268e27129b';
 const contractABI =  [
   {
   inputs: [],

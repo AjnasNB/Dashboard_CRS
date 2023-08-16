@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   
           const accounts = await web3.eth.getAccounts();
   
-          const contractAddress = "0xC280bE60613612b9Be2e397921276026688494Eb";
+          const contractAddress = "0x81dA37F59413989b0B62f54E071a53268e27129b";
           const CONTRACT_ABI = [
             {
                 "inputs": [],
